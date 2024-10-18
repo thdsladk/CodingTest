@@ -16,6 +16,11 @@ int main()
     cin >> N;
     vector<vector<long long >> dp(N+1,vector<long long>(10));
 
+    for(int i =1; i<10;i++)
+    {
+        elem =1;
+    }
+    
     for(int i =2; i<9;i++)
     {
         dp[2][i] = 2;
