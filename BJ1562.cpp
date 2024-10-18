@@ -14,7 +14,7 @@ int main()
     int N = 0;
 
     cin >> N;
-    vector<vector<long long >> dp(N+1,vector<int>(10));
+    vector<vector<long long >> dp(N+1,vector<long long>(10));
 
     for(int i =1; i<10;i++)
     {
@@ -51,10 +51,15 @@ int main()
 
     long long Result =0;
 
+for(int j=0;j<=N;j++)
+{
     for(int i=0;i<10;i++)
     {
-        Result += dp[N][i];
+        Result += dp[j][i];
     }
+    
+}
+    
 
     cout << (Result% 1'000'000'000);
 
