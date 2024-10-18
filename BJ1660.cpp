@@ -11,15 +11,18 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
+    int Bullet =1;
     int N,Count=0;
-    dp[300001]{};
+    int dp[300001]{};
     cin>> N;
     dp[1] = 1;
 
     int i =2;
-    while((N>=dp[i-1])
+
+    while((N>=dp[i-1]))
     {
-        dp[i]=dp[i-1] + i;
+        Bullet +=i;
+        dp[i]=dp[i-1] + Bullet;
         i++;
     }
     i--;    
@@ -32,6 +35,8 @@ int main()
             N = N % dp[i]; 
         }    
     }
+
+    
 
 
 
