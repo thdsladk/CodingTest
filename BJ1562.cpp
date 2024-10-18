@@ -16,13 +16,16 @@ int main()
     cin >> N;
     vector<vector<long long >> dp(N+1,vector<long long>(10));
 
-    for(int i =1; i<10;i++)
+    for(int i =2; i<9;i++)
     {
-        dp[1][i] = 1;
+        dp[2][i] = 2;
     }
+    dp[2][0] = 1;
+    dp[2][1] = 1;
+    dp[2][9] = 1;
+// N이 1이라면 계단수가 성립하지 못해서 생략하고 2부터 대입 
 
-
-    for(int i=2; i<=N;i++)
+    for(int i=3; i<=N;i++)
     {
         for(int j=0;j<10;j++)
         {
@@ -51,19 +54,13 @@ int main()
 
     long long Result =0;
 
-for(int j=0;j<=N;j++)
-{
+
     for(int i=0;i<10;i++)
     {
-        Result += dp[j][i];
+        Result += dp[N][i];
     }
-    
-}
-    
-
     cout << (Result% 1'000'000'000);
 
 
     return 0;
 }
-0
