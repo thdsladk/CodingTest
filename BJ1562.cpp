@@ -2,6 +2,8 @@
 
 #include <vector>
 
+#define MOD (int)1e9
+
 using namespace std; 
 
 
@@ -14,58 +16,37 @@ int main()
     int N = 0;
 
     cin >> N;
-    vector<vector<long long >> dp(N+1,vector<long long>(10));
+    vector<vector<vector<int>>> dp(N+1,vector<vector<int>>(10,vector<int>(1024)));
 
-    for(int i =1; i<10;i++)
-    {
-        elem =1;
-    }
-    
-    for(int i =2; i<9;i++)
-    {
-        dp[2][i] = 2;
-    }
-    dp[2][0] = 1;
-    dp[2][1] = 1;
-    dp[2][9] = 1;
-// N이 1이라면 계단수가 성립하지 못해서 생략하고 2부터 대입 
+    for(int i=1;i<10;i++)
+        dp[1][i][1<<i]=1;
 
-    for(int i=3; i<=N;i++)
+    for(int i=2;i<=N;i++)
     {
         for(int j=0;j<10;j++)
         {
-            switch(j)
+            for(int k=1;k<1024;k++)
             {
-                case 0 :
+                if(j==0)
                 {
-                    dp[i][j+1] += dp[i-1][j];
-                    break;
-                }
-                case 9 :
+                    dp[i][0][k|(1<<0)]=(dp[i][0][k|(1<<0)]+dp[i-1][1][k])%MOD;
+                } 
+                else if(j==9)
                 {
-                    dp[i][j-1] += dp[i-1][j];
-                    break;
-                }
-                default :
+                    dp[i][9][k|(1<<9)]=(dp[i][9][k|(1<<9)]+dp[i-1][8][k])%MOD;
+                }    
+                else
                 {
-                    dp[i][j-1] += dp[i-1][j];
-                    dp[i][j+1] += dp[i-1][j];
-                    break;
-                }
-            }
-
-        }
+                    dp[i][j][k|(1<<j)]=((dp[i][j][k|(1<<j)]+dp[i-1][j+1][k])%MOD+dp[i-1][j-1][k])%MOD;
+                } 
+            }   
+        } 
     }
 
-    long long Result =0;
-
-
-    for(int i=0;i<10;i++)
-    {
-        Result += dp[N][i];
-    }
-    cout << (Result% 1'000'000'000);
-
+    int ans=0;
+    for(int i=0;i<10;i++) ans=(ans+dp[N][i][1023])%MOD;
+    cout << ans << '\n';
 
     return 0;
 }
+
