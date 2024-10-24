@@ -28,9 +28,11 @@ int main()
     vector<int> Result(M);
     for(int i=0;i<M;i++)
     {
-        cin>>List_Sec[i];
-        Map.insert(List_Sec[i],i);
-        Result[i] = List_Sec[i]; 
+        int a=0;
+        cin>>a;
+        List_Sec[i] =a;
+        Map.insert(a,i);
+        Result[i] = a; 
     }
     sort(List_Sec.begin(),List_Sec.end());
 
