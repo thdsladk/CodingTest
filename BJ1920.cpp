@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include <vector>
-#include <queue>
-#include <functional>
+#include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -14,47 +14,50 @@ int main()
     int N,M =0;
 
     cin>>N;
-    priority_queue<int> List_Temp;
     vector<int> List(N); 
     for(int i=0;i<N;i++)
     {
-        int a=0;
-        cin >>a;
-        List_Temp.push(a);
+        cin >>List[i];
+    }
+    sort(List.begin(),List.end());
 
-    }
-    for(int i=0;i<N;i++)
-    {
-        List[i] = List_Temp.top();
-        List_Temp.pop();
-    }
 
     cin >>M;
+    map<int,int> Map;
     vector<int> List_Sec(M);
+    vector<int> Result(M);
     for(int i=0;i<M;i++)
     {
-        cin>>List_Sec[i]; 
+        cin>>List_Sec[i];
+        Map.insert(List_Sec[i],i);
+        Result[i] = List_Sec[i]; 
     }
+    sort(List_Sec.begin(),List_Sec.end());
 
-
-    for(auto elem : List_Sec)
+    auto A = List.begin();
+    auto B = List_Sec.begin();
+    while(A!=List.end() && B!=List_Sec.end())
     {
-        int Result =0;
-        for(int i=0;i<N;i++)
+        if(*A == *B)
         {
-            if(elem == List[i])
-            {
-                Result = 1;
-            }
-            else if(elem <List[i])
-            {
-                break;
-            }
+            Result[Map[*B]] =1;
+            A++;
+            B++;
         }
-        cout <<Result<<"\n";
+        else if(*A < *B)
+        {            
+            A++;
+        }
+        else if(*A > *B)
+        {
+            B++;
+        }
     }
 
-
+    for(auto elem : Result)
+    {
+        cout <<elem<<"\n";
+    }
 
 
 
