@@ -1,4 +1,4 @@
-#include <iosteam>
+#include <iostream>
 
 #include <vector>
 #include <queue>
@@ -14,14 +14,21 @@ int main()
     int N,M =0;
 
     cin>>N;
-    priority_queue<int> List
-    //vector<int> List(N); 
+    priority_queue<int> List_Temp;
+    vector<int> List(N); 
     for(int i=0;i<N;i++)
     {
         int a=0;
         cin >>a;
-        List.push(a);
+        List_Temp.push(a);
+
     }
+    for(int i=0;i<N;i++)
+    {
+        List[i] = List_Temp.top();
+        List_Temp.pop();
+    }
+
     cin >>M;
     vector<int> List_Sec(M);
     for(int i=0;i<M;i++)
@@ -52,7 +59,7 @@ int main()
 
 
 
-    retrun 0;
+    return 0;
 }
 
 /*
