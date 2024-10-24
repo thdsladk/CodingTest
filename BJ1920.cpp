@@ -25,14 +25,14 @@ int main()
     cin >>M;
     map<int,int> Map;
     vector<int> List_Sec(M);
-    vector<int> Result(M);
+    vector<int> List_Result(M);
     for(int i=0;i<M;i++)
     {
         int a=0;
         cin>>a;
         List_Sec[i] =a;
         Map.insert(a,i);
-        Result[i] = a; 
+        List_Result[i] = a; 
     }
     sort(List_Sec.begin(),List_Sec.end());
 
@@ -42,7 +42,7 @@ int main()
     {
         if(*A == *B)
         {
-            Result[Map[*B]] =1;
+            List_Result[Map[*B]] =1;
             A++;
             B++;
         }
@@ -56,7 +56,7 @@ int main()
         }
     }
 
-    for(auto elem : Result)
+    for(auto elem : List_Result)
     {
         cout <<elem<<"\n";
     }
