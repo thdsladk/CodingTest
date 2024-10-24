@@ -23,37 +23,40 @@ int main()
 
 
     cin >>M;
-    map<int,int> List_Map;
     vector<int> List_Sec(M);
-    vector<int> List_Result(M);
     for(int i=0;i<M;i++)
     {
-        int a=0;
-        cin>>a;
-        List_Sec[i] =a;
-        List_Map.insert(a,i);
-        List_Result[i] = a; 
+        cin>>List_Sec[i];
     }
-    sort(List_Sec.begin(),List_Sec.end());
 
-    vector<int>::iterator  A = List.begin();
-    vector<int>::iterator B = List_Sec.begin();
-    while(A!=List.end() && B!=List_Sec.end())
+    for(auto elem : List_Sec)
     {
-        if(*A == *B)
+        int Start,Mid,End =0;
+        Start =0;
+        End = List.size()-1;
+        while(true)
         {
-            List_Result[List_Map[*B]] =1;
-            A++;
-            B++;
+
+            Mid = (Start + End) / 2;
+
+            if(List[Mid]  == elem)
+            {
+                cout<<"1\n";
+                break;
+            }
+            else if(List[Mid]  > elem)
+            {
+                End = Mid;
+            }
+            else
+            {
+                Start = Mid;
+            }
+
         }
-        else if(*A < *B)
-        {            
-            A++;
-        }
-        else if(*A > *B)
-        {
-            B++;
-        }
+
+
+
     }
 
     for(int elem : List_Result)
