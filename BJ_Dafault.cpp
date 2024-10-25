@@ -1,4 +1,4 @@
-#include <iosteam>
+#include <iostream>
 
 #include <vector>
 
@@ -12,5 +12,5 @@ int main()
 
 
 
-    retrun 0;
+    return 0;
 }
