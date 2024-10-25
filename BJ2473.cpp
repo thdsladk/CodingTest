@@ -10,11 +10,11 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    constexpr int INF = 0x3f3f3f3f;
+    constexpr long long INF = 0x3f3f3f3f3f3f3f3fll;
     int N=0;
-    vector<int> Result(3);
+    vector<long long> Result(3);
     cin>>N;
-    vector<int> List(N); 
+    vector<long long> List(N); 
     for(int i=0;i<N;i++)
     {
         cin >>List[i];
@@ -23,28 +23,32 @@ int main()
 
 
     // two pointer
-    int Temp = INF;
+    long long Temp = INF;
     int Start = 0;
     int End = N-1;
 
-    for(int i=0;Start <End;)
+    while(Start <End)
     {
-        if(i%2 == 0){Start++;}
-        else {End--;}
-
-        for(int Mid=Start+1;Mid<End;Mid++)
+        int L = Start;
+        int R = End;
+        for(int Mid= (L+R) /2;Mid>L && Mid <R;)
         {
-            if(Temp  > List[Start] + List[Mid] + List[End])
+            Mid = (L+R)/2;
+            if(abs(Temp)  > abs(List[L] + List[Mid] + List[R]))
             {
-                Temp  = List[Start] + List[Mid] + List[End];
-                Result[0] = List[Start];
+                Temp  = List[L] + List[Mid] + List[R];
+                Result[0] = List[L];
                 Result[1] = List[Mid];
-                Result[2] = List[End];
+                Result[2] = List[R];
             }
+            if(Temp<0){L =Mid+1;}
+            else if(Temp>0){R = Mid-1;}
+            else{break;}
         }
         
-       
-
+        if(Temp < 0){Start++;}
+        else if(Temp >0) {End--;}
+        else {break;}
     }
     
 
@@ -52,3 +56,25 @@ int main()
 
     return 0;
 }
+
+
+/* 이분탐색 없이 완전 탐색으로 찾았을때 
+
+    while(Start <End)
+    {
+        for(int Mid=Start+1;Mid<End;Mid++)
+        {
+            if(abs(Temp)  > abs(List[Start] + List[Mid] + List[End]))
+            {
+                Temp  = List[Start] + List[Mid] + List[End];
+                Result[0] = List[Start];
+                Result[1] = List[Mid];
+                Result[2] = List[End];
+            }
+        }
+        if(Temp < 0){Start++;}
+        else if(Temp >0) {End--;}
+        else {break;}
+    }
+    
+    */
