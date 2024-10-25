@@ -32,13 +32,13 @@ int main()
         if(i%2 == 0){Start++;}
         else {End--;}
 
-        for(int j=Start+1;j<End;j++)
+        for(int Mid=Start+1;Mid<End;Mid++)
         {
-            if(Temp  > List[Start] + List[End] + List[j])
+            if(Temp  > List[Start] + List[Mid] + List[End])
             {
-                Temp  = List[Start] + List[End] + List[j];
+                Temp  = List[Start] + List[Mid] + List[End];
                 Result[0] = List[Start];
-                Result[1] = List[j];
+                Result[1] = List[Mid];
                 Result[2] = List[End];
             }
         }
