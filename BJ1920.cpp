@@ -29,11 +29,13 @@ int main()
         cin>>List_Sec[i];
     }
 
+/*
     for(auto elem : List_Sec)
     {
         int Start,Mid,End =0;
         Start =0;
-        End = List.size()-1;
+        End = List.size();
+        if(elem > End){cout << "0\n";continue;}
         while(true)
         {
 
@@ -53,17 +55,31 @@ int main()
                 Start = Mid;
             }
 
+            if(Mid ==0 || Mid ==List.size()-1)
+            {
+                cout << "0\n";
+                break;
+            }
+
         }
 
 
 
     }
 
-    for(int elem : List_Result)
-    {
-        cout <<elem<<"\n";
-    }
+*/
 
+    for(auto elem : List_Sec)
+    {
+        if(binary_search(List.begin(),List.end(),elem) ==true)
+        {
+            cout << "1\n";
+        }
+        else
+        {
+            cout <<"0\n";
+        }
+    }
 
 
 
@@ -72,6 +88,7 @@ int main()
 
 /*
  이분 탐색 
-
+    그냥 깔끔하게 내장함수 쓰자 
+    binary_search쓰자 ...
 
 */
