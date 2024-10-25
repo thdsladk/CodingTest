@@ -31,9 +31,9 @@ int main()
     {
         int L = Start;
         int R = End;
-        for(int Mid= (L+R) /2;Mid>L && Mid <R;)
+        for(int Mid= (L+R) /2;Mid>L && Mid <R; Mid = (L+R)/2)
         {
-            Mid = (L+R)/2;
+           
             if(abs(Temp)  > abs(List[L] + List[Mid] + List[R]))
             {
                 Temp  = List[L] + List[Mid] + List[R];
