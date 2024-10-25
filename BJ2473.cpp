@@ -31,15 +31,14 @@ int main()
     {
         int L = Start;
         int R = End;
-        for(int Mid= (L+R) /2;Mid>L && Mid <R; Mid = (L+R)/2)
-        {
-           
-            if(abs(Temp)  > abs(List[L] + List[Mid] + List[R]))
+        for(int Mid= (L+R) /2;L<R; Mid = (L+R)/2)
+        {        
+            if(abs(Temp)  > abs(List[Start] + List[Mid] + List[End]))
             {
-                Temp  = List[L] + List[Mid] + List[R];
-                Result[0] = List[L];
+                Temp  = List[Start] + List[Mid] + List[R];
+                Result[0] = List[Start];
                 Result[1] = List[Mid];
-                Result[2] = List[R];
+                Result[2] = List[End];
             }
             if(Temp<0){L =Mid+1;}
             else if(Temp>0){R = Mid-1;}
