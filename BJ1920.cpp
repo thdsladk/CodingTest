@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include <vector>
+
 #include <map>
 #include <algorithm>
 
@@ -31,12 +32,6 @@ int main()
 
 /*
     for(auto elem : List_Sec)
-    {
-        int Start,Mid,End =0;
-        Start =0;
-        End = List.size();
-        if(elem > End){cout << "0\n";continue;}
-        while(true)
         {
 
             Mid = (Start + End) / 2;
